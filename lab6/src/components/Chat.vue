@@ -14,6 +14,34 @@
                 chats.chats = data;
             })
     });
+
+    const addChat = () => {
+        let newChat = {
+            user: 'Marianne',
+            text: text.value
+        }
+        
+        const apiUrl = 'https://lab5-p379.onrender.com/api/v1/messages/';
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newChat)
+        })
+        .then(res => res.json())
+        .then(data => {
+            chats.chats.push({
+                user: data.data.user,
+                text: data.data.text
+            });
+        })
+
+        // error handling
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
 </script>
 
 <template>
@@ -25,11 +53,19 @@
                 </li>
             </ul>
         </div>
-     </div>
+        <div class="input">
+            <input type="text" v-model="text" />
+            <button @click="addChat">Add comment</button>
+        </div>
+    </div>
 </template>
 
 <style scoped>
     ul {
         list-style: none;
+    }
+
+    .input {
+        padding-left: 2.5em;
     }
 </style>
