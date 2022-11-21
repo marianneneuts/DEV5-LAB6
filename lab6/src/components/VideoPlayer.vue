@@ -52,14 +52,12 @@
 
     .controls {
         position: absolute;
-        top: 50%;
+        top: 11.1%;
         left: 50%;
-        transform: translate(-50%, -50%);
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        max-width: 500px;
     }
 
     a {
