@@ -10,6 +10,7 @@
         <VideoPlayer />
         <div class="allDetails">
             <VideoDetails />
+            <Chat />
         </div>
     </div>
 </template>
